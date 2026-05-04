@@ -97,18 +97,18 @@ const AdminPanel = () => {
   };
 
   const tabs = [
-    { id: "stats", label: "📊 Stats" },
-    { id: "users", label: "👥 Users" },
-    { id: "rides", label: "🚗 Rides" },
-    { id: "stations", label: "🅿️ Stations" },
-    { id: "bookings", label: "📋 Bookings" },
+    { id: "stats", label: "Stats" },
+    { id: "users", label: "Users" },
+    { id: "rides", label: "Rides" },
+    { id: "stations", label: "Stations" },
+    { id: "bookings", label: "Bookings" },
   ];
 
   return (
     <div className="page">
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "1.75rem", flexWrap: "wrap", gap: "1rem" }}>
         <div>
-          <h1 style={{ fontSize: "1.75rem", marginBottom: "0.25rem" }}>Admin Panel ⚙️</h1>
+          <h1 style={{ fontSize: "1.75rem", marginBottom: "0.25rem" }}>Admin Panel</h1>
           <p style={{ color: "#94a3b8" }}>Manage the EcoShare platform</p>
         </div>
         <button
@@ -116,7 +116,7 @@ const AdminPanel = () => {
           onClick={() => loadTab(activeTab)}
           disabled={loading}
         >
-          🔄 Refresh
+          Refresh
         </button>
       </div>
 
@@ -146,14 +146,13 @@ const AdminPanel = () => {
       {!loading && activeTab === "stats" && stats && (
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: "1rem" }}>
           {[
-            { label: "Total Users", value: stats.totalUsers, icon: "👥", color: "#6366f1" },
-            { label: "Total Rides", value: stats.totalRides, icon: "🚗", color: "#10b981" },
-            { label: "Bike Stations", value: stats.totalBikeStations, icon: "🅿️", color: "#f59e0b" },
-            { label: "Total Bookings", value: stats.totalBookings, icon: "📋", color: "#38bdf8" },
-            { label: "Active Bookings", value: stats.activeBookings, icon: "⚡", color: "#f43f5e" },
+            { label: "Total Users",    value: stats.totalUsers,       color: "#6366f1" },
+            { label: "Total Rides",    value: stats.totalRides,       color: "#10b981" },
+            { label: "Bike Stations",  value: stats.totalBikeStations, color: "#f59e0b" },
+            { label: "Total Bookings", value: stats.totalBookings,    color: "#38bdf8" },
+            { label: "Active Bookings",value: stats.activeBookings,   color: "#f43f5e" },
           ].map((s) => (
             <div key={s.label} className="stat-card">
-              <div style={{ fontSize: "2rem" }}>{s.icon}</div>
               <div style={{ fontSize: "2.5rem", fontWeight: 800, color: s.color, margin: "0.375rem 0" }}>
                 {s.value}
               </div>
@@ -251,7 +250,7 @@ const AdminPanel = () => {
         <>
           {/* Add Station Form */}
           <div className="card" style={{ padding: "1.5rem", marginBottom: "1.5rem" }}>
-            <h3 style={{ marginBottom: "1rem", fontSize: "1rem" }}>➕ Add New Station</h3>
+            <h3 style={{ marginBottom: "1rem", fontSize: "1rem" }}>Add New Station</h3>
             <form onSubmit={handleAddStation}>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "0.75rem", marginBottom: "0.75rem" }}>
                 <div>
@@ -354,7 +353,7 @@ const AdminPanel = () => {
                   <td>{b.user?.name || "—"}</td>
                   <td>
                     <span className={`badge ${b.type === "carpool" ? "badge-green" : "badge-blue"}`}>
-                      {b.type === "carpool" ? "🚗" : "🚴"} {b.type}
+                      {b.type}
                     </span>
                   </td>
                   <td style={{ fontSize: "0.8125rem", color: "#94a3b8" }}>

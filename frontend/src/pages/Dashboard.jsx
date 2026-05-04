@@ -39,10 +39,10 @@ const Dashboard = () => {
   }, [isAdmin]);
 
   const quickActions = [
-    { icon: "🔍", label: "Find a Ride", desc: "Search available carpools", path: "/rides", color: "#10b981" },
-    { icon: "🚗", label: "Offer Ride", desc: "Share your journey", path: "/offer-ride", color: "#6366f1" },
-    { icon: "🚴", label: "Rent a Bike", desc: "Quick eco-friendly trips", path: "/bikes", color: "#f59e0b" },
-    { icon: "📋", label: "My History", desc: "View past bookings", path: "/history", color: "#38bdf8" },
+    { label: "Find a Ride", desc: "Search available carpools", path: "/rides", color: "#10b981" },
+    { label: "Offer Ride", desc: "Share your journey", path: "/offer-ride", color: "#6366f1" },
+    { label: "Rent a Bike", desc: "Quick eco-friendly trips", path: "/bikes", color: "#f59e0b" },
+    { label: "My History", desc: "View past bookings", path: "/history", color: "#38bdf8" },
   ];
 
   return (
@@ -108,14 +108,13 @@ const Dashboard = () => {
             gap: "1rem",
           }}>
             {[
-              { label: "Users", value: stats.totalUsers, icon: "👥", color: "#6366f1" },
-              { label: "Rides", value: stats.totalRides, icon: "🚗", color: "#10b981" },
-              { label: "Stations", value: stats.totalBikeStations, icon: "🅿️", color: "#f59e0b" },
-              { label: "Bookings", value: stats.totalBookings, icon: "📋", color: "#38bdf8" },
-              { label: "Active", value: stats.activeBookings, icon: "⚡", color: "#f43f5e" },
+              { label: "Users", value: stats.totalUsers, color: "#6366f1" },
+              { label: "Rides", value: stats.totalRides, color: "#10b981" },
+              { label: "Stations", value: stats.totalBikeStations, color: "#f59e0b" },
+              { label: "Bookings", value: stats.totalBookings, color: "#38bdf8" },
+              { label: "Active", value: stats.activeBookings, color: "#f43f5e" },
             ].map((s) => (
               <div key={s.label} className="stat-card">
-                <div style={{ fontSize: "1.75rem", marginBottom: "0.5rem" }}>{s.icon}</div>
                 <div style={{ fontSize: "2rem", fontWeight: 800, color: s.color }}>{s.value}</div>
                 <div style={{ fontSize: "0.8rem", color: "#64748b", fontWeight: 500 }}>{s.label}</div>
               </div>
@@ -135,7 +134,6 @@ const Dashboard = () => {
         {quickActions.map((action) => (
           <Link key={action.path} to={action.path} style={{ textDecoration: "none" }}>
             <div className="card" style={{ padding: "1.5rem", cursor: "pointer", borderLeft: `3px solid ${action.color}` }}>
-              <div style={{ fontSize: "2rem", marginBottom: "0.75rem" }}>{action.icon}</div>
               <div style={{ fontWeight: 700, marginBottom: "0.25rem" }}>{action.label}</div>
               <div style={{ fontSize: "0.8125rem", color: "#64748b" }}>{action.desc}</div>
             </div>
@@ -144,7 +142,6 @@ const Dashboard = () => {
         {isAdmin && (
           <Link to="/admin" style={{ textDecoration: "none" }}>
             <div className="card" style={{ padding: "1.5rem", cursor: "pointer", borderLeft: "3px solid #f43f5e" }}>
-              <div style={{ fontSize: "2rem", marginBottom: "0.75rem" }}>⚙️</div>
               <div style={{ fontWeight: 700, marginBottom: "0.25rem" }}>Admin Panel</div>
               <div style={{ fontSize: "0.8125rem", color: "#64748b" }}>Manage platform data</div>
             </div>

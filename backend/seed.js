@@ -7,6 +7,7 @@ dotenv.config();
 const User = require("./models/User");
 const Bike = require("./models/Bike");
 const Ride = require("./models/Ride");
+const Booking = require("./models/Booking");
 
 /**
  * Seed Script
@@ -22,6 +23,7 @@ const seed = async () => {
     await User.deleteMany({});
     await Bike.deleteMany({});
     await Ride.deleteMany({});
+    await Booking.deleteMany({});
     console.log("🗑️  Cleared existing data");
 
     // ── Create Users ──────────────────────────────────────────────────────────
@@ -35,15 +37,15 @@ const seed = async () => {
     });
 
     const user1 = await User.create({
-      name: "Aditya Kumar",
-      email: "aditya@campus.edu",
+      name: "Sai Aditya",
+      email: "aditya@gmail.com",
       password: "password123",
       role: "user",
     });
 
     const user2 = await User.create({
-      name: "Priya Sharma",
-      email: "priya@campus.edu",
+      name: "Praneeth Singh",
+      email: "praneeth@gmail.com",
       password: "password123",
       role: "user",
     });
@@ -52,11 +54,11 @@ const seed = async () => {
 
     // ── Create Bike Stations ─────────────────────────────────────────────────
     await Bike.insertMany([
-      { stationName: "Main Gate Dock", location: "Main Gate, Campus", totalBikes: 12, availableBikes: 10 },
-      { stationName: "Library Hub", location: "Central Library, Block A", totalBikes: 8, availableBikes: 8 },
-      { stationName: "Hostel Cluster", location: "Boys Hostel, Block C", totalBikes: 15, availableBikes: 12 },
-      { stationName: "Sports Complex", location: "Sports Ground, South Campus", totalBikes: 6, availableBikes: 4 },
-      { stationName: "Cafeteria Point", location: "Main Cafeteria, Block B", totalBikes: 10, availableBikes: 9 },
+      { stationName: "Gate No. 3", location: "Main Gate, Campus", totalBikes: 12, availableBikes: 10 },
+      { stationName: "Library", location: "Admin Block", totalBikes: 8, availableBikes: 8 },
+      { stationName: "SR Block", location: "Kaveri Hostel", totalBikes: 15, availableBikes: 12 },
+      { stationName: "Ganga B", location: "Main Gate", totalBikes: 6, availableBikes: 4 },
+      { stationName: "Admin Block", location: "C Block", totalBikes: 10, availableBikes: 9 },
     ]);
     console.log("🚴 Bike stations created");
 
@@ -73,7 +75,7 @@ const seed = async () => {
       {
         driver: user1._id,
         source: "Main Gate",
-        destination: "City Centre Mall",
+        destination: "Railway Station",
         departureTime: tomorrow,
         seatsAvailable: 3,
         vehicleType: "Car",
@@ -81,29 +83,29 @@ const seed = async () => {
       },
       {
         driver: user2._id,
-        source: "Hostel Block A",
-        destination: "Railway Station",
+        source: "Gate No.3",
+        destination: "Mangalagiri",
         departureTime: dayAfter,
-        seatsAvailable: 2,
-        vehicleType: "SUV",
+        seatsAvailable: 1,
+        vehicleType: "Bike",
         notes: "Leaving sharp at 9 AM",
       },
       {
         driver: user1._id,
-        source: "Campus Library",
-        destination: "Airport",
+        source: "C Block",
+        destination: "Neerukonda",
         departureTime: dayAfter,
         seatsAvailable: 1,
         vehicleType: "Car",
         notes: "Large luggage allowed",
       },
     ]);
-    console.log("🚗 Sample rides created");
+    console.log("Sample rides created");
 
     console.log("\n✨ Seed complete! Login credentials:");
-    console.log("   Admin  → admin@ecoshare.com  | password123");
-    console.log("   User 1 → aditya@campus.edu   | password123");
-    console.log("   User 2 → priya@campus.edu    | password123\n");
+    console.log("   Admin  → admin@ecoshare.com | password123");
+    console.log("   User 1 → aditya@gmail.com   | password123");
+    console.log("   User 2 → praneeth@gmail.com | password123\n");
 
     process.exit(0);
   } catch (error) {

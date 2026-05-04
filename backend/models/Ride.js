@@ -29,7 +29,7 @@ const rideSchema = new mongoose.Schema(
     seatsAvailable: {
       type: Number,
       required: [true, "Number of seats is required"],
-      min: 1,
+      min: 0,
       max: 8,
     },
     // Array of user IDs who booked this ride

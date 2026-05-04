@@ -30,10 +30,13 @@ API.interceptors.request.use(
 
 // ── Response Interceptor ──────────────────────────────────────────────────────
 // Handle 401 Unauthorized globally (auto-logout)
+// IMPORTANT: Skip auth routes — a failed login/register legitimately returns 401
+// and should show a toast error, NOT trigger an auto-logout redirect.
 API.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401) {
+    const isAuthRoute = error.config?.url?.includes("/auth/");
+    if (error.response?.status === 401 && !isAuthRoute) {
       localStorage.removeItem("userInfo");
       window.location.href = "/login";
     }

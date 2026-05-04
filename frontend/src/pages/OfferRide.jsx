@@ -145,9 +145,7 @@ const OfferRide = () => {
                 style={{ appearance: "none" }}
               >
                 <option value="Car">🚗 Car</option>
-                <option value="SUV">🚙 SUV</option>
                 <option value="Bike">🏍️ Bike</option>
-                <option value="Auto">🛺 Auto</option>
               </select>
             </div>
           </div>

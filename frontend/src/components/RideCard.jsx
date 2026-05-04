@@ -75,7 +75,7 @@ const RideCard = ({ ride, onBook, loading = false, showBook = true }) => {
           <span className="badge badge-blue">🚗 {ride.vehicleType || "Car"}</span>
           {ride.notes && (
             <span style={{ fontSize: "0.75rem", color: "#94a3b8", fontStyle: "italic" }}>
-              "{ride.notes}"
+              &quot;{ride.notes}&quot;
             </span>
           )}
         </div>

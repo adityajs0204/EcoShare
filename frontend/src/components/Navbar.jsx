@@ -21,15 +21,15 @@ const Navbar = () => {
   const isActive = (path) => location.pathname === path;
 
   const navLinks = [
-    { path: "/dashboard", label: "Dashboard", icon: "🏠" },
-    { path: "/rides", label: "Find Rides", icon: "🔍" },
-    { path: "/offer-ride", label: "Offer Ride", icon: "🚗" },
-    { path: "/bikes", label: "Bike Rental", icon: "🚴" },
-    { path: "/history", label: "History", icon: "📋" },
+    { path: "/dashboard", label: "Dashboard" },
+    { path: "/rides", label: "Find Rides" },
+    { path: "/offer-ride", label: "Offer Ride" },
+    { path: "/bikes", label: "Bike Rental" },
+    { path: "/history", label: "History" },
   ];
 
   if (isAdmin) {
-    navLinks.push({ path: "/admin", label: "Admin", icon: "⚙️" });
+    navLinks.push({ path: "/admin", label: "Admin" });
   }
 
   return (
@@ -46,7 +46,6 @@ const Navbar = () => {
 
           {/* ── Logo ── */}
           <Link to="/dashboard" style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-            <span style={{ fontSize: "1.5rem" }}>🌿</span>
             <span style={{ fontFamily: "Outfit, sans-serif", fontWeight: 800, fontSize: "1.125rem" }}>
               <span className="gradient-text">Eco</span>
               <span style={{ color: "#f1f5f9" }}>Share</span>
@@ -70,13 +69,11 @@ const Navbar = () => {
                     transition: "all 0.2s",
                     display: "flex",
                     alignItems: "center",
-                    gap: "0.375rem",
                     textDecoration: "none",
                   }}
                   onMouseEnter={(e) => { if (!isActive(link.path)) e.currentTarget.style.color = "#f1f5f9"; }}
                   onMouseLeave={(e) => { if (!isActive(link.path)) e.currentTarget.style.color = "#94a3b8"; }}
                 >
-                  <span>{link.icon}</span>
                   {link.label}
                 </Link>
               ))}
@@ -98,7 +95,7 @@ const Navbar = () => {
                   className="btn btn-secondary btn-sm"
                   title="Logout"
                 >
-                  🚪 Logout
+                  Logout
                 </button>
               </>
             ) : (
@@ -112,7 +109,7 @@ const Navbar = () => {
                 style={{ background: "none", border: "none", color: "#f1f5f9", fontSize: "1.25rem", display: "none" }}
                 className="mobile-menu-btn"
               >
-                {mobileOpen ? "✕" : "☰"}
+                {mobileOpen ? "✕" : "≡"}
               </button>
             )}
           </div>
@@ -140,10 +137,9 @@ const Navbar = () => {
                   background: isActive(link.path) ? "rgba(16,185,129,0.1)" : "transparent",
                   display: "flex",
                   alignItems: "center",
-                  gap: "0.5rem",
                 }}
               >
-                {link.icon} {link.label}
+                {link.label}
               </Link>
             ))}
             <div style={{ padding: "0.375rem 1rem", fontSize: "0.8125rem", color: "#64748b" }}>

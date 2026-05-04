@@ -6,6 +6,7 @@ const {
   bookRide,
   getMyRides,
   getRideById,
+  deleteRide,
 } = require("../controllers/rideController");
 const { protect } = require("../middleware/auth");
 
@@ -26,5 +27,8 @@ router.get("/:id", getRideById);
 
 // @route POST /api/rides/book/:id
 router.post("/book/:id", bookRide);
+
+// @route DELETE /api/rides/:id
+router.delete("/:id", deleteRide);
 
 module.exports = router;

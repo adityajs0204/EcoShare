@@ -12,7 +12,7 @@ const app = express();
 // ─── Middleware ────────────────────────────────────────────────────────────────
 
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:3000"],
+  origin: ["http://localhost:5173", "http://localhost:5174", "http://localhost:3000"],
   credentials: true,
 }));
 app.use(express.json());
@@ -81,7 +81,7 @@ const startServer = async () => {
       console.log("📦 Using IN-MEMORY database (data resets on restart)");
       console.log("   Demo logins:");
       console.log("   Admin → admin@ecoshare.com  | password123");
-      console.log("   User  → aditya@campus.edu   | password123");
+      console.log("   User  → aditya@gmail.com   | password123");
     }
   });
 };
@@ -104,15 +104,15 @@ const seedSampleData = async () => {
     });
 
     const user1 = await User.create({
-      name: "Aditya Kumar",
-      email: "aditya@campus.edu",
+      name: "Sai Aditya",
+      email: "aditya@gmail.com",
       password: "password123",
       role: "user",
     });
 
     const user2 = await User.create({
-      name: "Priya Sharma",
-      email: "priya@campus.edu",
+      name: "Praneeth Singh",
+      email: "praneeth@gmail.com",
       password: "password123",
       role: "user",
     });

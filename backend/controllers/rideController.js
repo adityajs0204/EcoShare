@@ -152,4 +152,29 @@ const getRideById = async (req, res) => {
   }
 };
 
-module.exports = { createRide, searchRides, bookRide, getMyRides, getRideById };
+/**
+ * @route   DELETE /api/rides/:id
+ * @desc    Delete a ride posted by the logged-in driver
+ * @access  Protected (driver only)
+ */
+const deleteRide = async (req, res) => {
+  try {
+    const ride = await Ride.findById(req.params.id);
+    if (!ride) return res.status(404).json({ message: "Ride not found" });
+
+    // Only the driver who created the ride can delete it
+    if (ride.driver.toString() !== req.user._id.toString()) {
+      return res.status(403).json({ message: "Not authorized to delete this ride" });
+    }
+
+    // Clean up all bookings linked to this ride
+    await Booking.deleteMany({ ride: ride._id });
+
+    await ride.deleteOne();
+    res.json({ message: "Ride deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+module.exports = { createRide, searchRides, bookRide, getMyRides, getRideById, deleteRide };

@@ -104,13 +104,20 @@ const Login = () => {
           {/* Demo credentials hint */}
           <div style={{
             marginTop: "1.5rem",
-            padding: "0.75rem",
+            padding: "0.875rem",
             background: "rgba(16,185,129,0.06)",
             borderRadius: "0.5rem",
             fontSize: "0.8rem",
             color: "#64748b",
+            lineHeight: 1.8,
           }}>
-            💡 <strong style={{ color: "#94a3b8" }}>Demo:</strong> Register a new account or ask an admin to seed data.
+            💡 <strong style={{ color: "#94a3b8" }}>Demo credentials:</strong>
+            <div style={{ marginTop: "0.375rem" }}>
+              <span style={{ color: "#10b981" }}>Admin:</span> admin@ecoshare.com / password123
+            </div>
+            <div>
+              <span style={{ color: "#10b981" }}>User:</span> aditya@gmail.com / password123
+            </div>
           </div>
         </div>
       </div>
